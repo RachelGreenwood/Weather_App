@@ -7,6 +7,7 @@ const Weather = ({ data, city }) => {
                 <img src={data.weather[0].icon} />
                 <p>Temp: {data.main.temp}</p>
                 <p>Feels Like: {data.main.feels_like}</p>
+                <p>Humidity: {data.main.humidity}</p>
             </div>
         )
     }
