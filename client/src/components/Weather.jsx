@@ -8,6 +8,7 @@ const Weather = ({ data, city }) => {
                 <p>Temp: {data.main.temp}</p>
                 <p>Feels Like: {data.main.feels_like}</p>
                 <p>Humidity: {data.main.humidity}</p>
+                <p>Wind Speed: {data.wind.speed}</p>
             </div>
         )
     }
