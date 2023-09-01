@@ -1,5 +1,4 @@
 const express = require('express');
-import "dotenv/config";
 const cors = require('cors');
 
 const app = express();
@@ -7,12 +6,8 @@ app.use(cors());
 
 const PORT = process.env.PORT || 8000;
 
-app.get("/api", (req, res) => {
-    console.log(req.query);
-    const city = req.query.city;
-    const apiKey = process.env.API_KEY;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-    console.log(url);
+app.get("/api/weather", (req, res) => {
+    
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
@@ -24,5 +19,5 @@ app.get("/api", (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server listening onn ${PORT}`);
+    console.log(`Server listening on ${PORT}`);
 })
