@@ -6,6 +6,7 @@ const Weather = ({ data, city }) => {
                 <p>Description: {data.weather[0].description}</p>
                 <img src={data.weather[0].icon} />
                 <p>Temp: {data.main.temp}</p>
+                <p>Feels Like: {data.main.feels_like}</p>
             </div>
         )
     }
