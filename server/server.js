@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8000;
 app.get("/api/weather", async (req, res) => {
     const city = req.query.city;
     console.log(city);
-    const apiKey = "89fe2e5945f89e739118d5493ebb2f2c";
+    const apiKey = process.env.apiKey;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${req.query.city}&appid=${apiKey}`;
     const response = await fetch(url);
     const weatherData = await response.json();
