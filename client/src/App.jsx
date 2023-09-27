@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
 import './App.css';
-import Weather from "./components/Weather";
-import Form from "./components/Form";
+import Name from "./components/Name";
 
 function App() {
   return (
     <div>
-      <Form />
+      <Name />
     </div>
   )
 }

@@ -10,6 +10,7 @@ const Form = () => {
             `http://localhost:8000/api/weather?city=${city}`
         );
         const weatherData = await response.json();
+        console.log("In the server", weatherData);
         setData(weatherData);
     };
 
