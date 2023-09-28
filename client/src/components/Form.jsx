@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import Weather from "./Weather";
 
-const Form = () => {
+const Form = (props) => {
     const [city, setCity] = useState("");
     const [data, setData] = useState("");
+    const { name } = props;
 
     const fetchWeather = async () => {
         const response = await fetch(
@@ -20,7 +21,7 @@ const Form = () => {
                 <input type="text" onChange={(e) => setCity(e.target.value)}></input>
                 <button onClick={fetchWeather}>See Weather</button>
             </div>
-            <Weather city={city} data={data} />
+            <Weather city={city} data={data} name={name} />
         </div>
     )
 }

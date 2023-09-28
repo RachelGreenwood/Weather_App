@@ -9,10 +9,8 @@ const Name = () => {
         setInput(e.target.value);
     }
 
-    const handleSubmit = (e) => {
-        setName(input)
-        console.log(name);
-        console.log(input);
+    const handleSubmit = () => {
+        setName(input);
     }
 
     // TODO: Send name data to DB (with favorite city, or before?)
@@ -23,7 +21,7 @@ const Name = () => {
                 <label>What's your name?</label>
                 <input type='text' value={input} onChange={handleInput}></input>
                 <button onClick={handleSubmit}>Save Name</button>
-                {name && <Form />}
+                {name && <Form name={name} />}
             </div>
         </div>
     )
