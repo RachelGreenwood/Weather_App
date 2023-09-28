@@ -1,5 +1,21 @@
 const Weather = ({ data, city, name }) => {
+    const handlePostRequest = () => {
+        const postData = { name, city };
+        console.log("Inside the POST, ", data);
+        fetch("http://localhost:8000/users", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(postData)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Data sent to server, ", data);
+        })
+        .catch((err) => console.error("Error: ", err))
+        }
+
     // Pass data.name and name to server
+
     if (data && city) {
         return (
             <div>
@@ -15,7 +31,7 @@ const Weather = ({ data, city, name }) => {
                 </div>
                 <div>
                     <p>Is this your favorite city?</p>
-                    <button>Save City</button>
+                    <button onClick={handlePostRequest}>Save City</button>
                 </div>
             </div>
         )
