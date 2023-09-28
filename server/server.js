@@ -8,6 +8,9 @@ const db = require('./db/db-connection.js');
 const app = express();
 app.use(cors());
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 const PORT = process.env.PORT || 8000;
 
 app.get("/api/weather", async (req, res) => {
@@ -28,6 +31,23 @@ app.get('/users', async (req, res) => {
     } catch(error){
         console.log(error);
         return res.status(400).json({error});
+    }
+});
+
+app.post("/users", async (req, res) => {
+    try {
+        console.log("In the server", req.body);
+        const { name, city } = req.body;
+        const result = await db.query(
+            "INSERT INTO users (name, city) VALUES ($1, $2) RETURNING *",
+            [name, city]
+        );
+        let dbResponse = result.rows[0];
+        console.log(dbResponse);
+        res.json(dbResponse);
+    } catch (err) {
+        console.log(err);
+        res.status(400).json({err});
     }
 });
 
