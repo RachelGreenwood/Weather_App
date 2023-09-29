@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Weather from "./Weather";
 
 const Form = (props) => {
@@ -14,6 +14,17 @@ const Form = (props) => {
         console.log("In the server", weatherData);
         setData(weatherData);
     };
+
+    const handleGetRequest = () => {
+        fetch(`http://localhost:8000/users`)
+        .then((response) => response.json())
+        .then((location) => {
+            setCity(location);
+            console.log('City fetched: ', location );
+        })
+    };
+
+    useEffect(() => {handleGetRequest()}, []);
 
     return (
         <div>

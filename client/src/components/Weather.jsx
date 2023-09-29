@@ -1,4 +1,26 @@
+import { useEffect, useState } from 'react';
+
 const Weather = ({ data, city, name }) => {
+    // const handleGetRequest = () => {
+    //     fetch(`http://localhost:8000/users`)
+    //     .then((response) => response.json())
+    //     .then((location) => {
+    //         setCity(location);
+    //         console.log('City fetched: ', location );
+    //     })
+    // };
+
+    // useEffect(() => {handleGetRequest()}, []);
+
+    // const getRequest = () => {
+    //     fetch("http://localhost:8080/events")
+    //     .then((response) => response.json())
+    //     .then(events => {
+    //       setEvents(events); 
+    //       console.log('Events fetched...', events);
+    //       });
+    //   }
+
     const handlePostRequest = () => {
         const postData = { name, city };
         console.log("Inside the POST, ", data);
@@ -13,8 +35,6 @@ const Weather = ({ data, city, name }) => {
         })
         .catch((err) => console.error("Error: ", err))
         }
-
-    // Pass data.name and name to server
 
     if (data && city) {
         return (
