@@ -51,6 +51,26 @@ app.post("/users", async (req, res) => {
     }
 });
 
+app.put('/users/:id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const { city } = req.body;
+        const result = await db.query(
+            "UPDATE users SET city = $1 WHERE id = $2 RETURNING *",
+            [city, userId]
+        );
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: "City not found "});
+        }
+        let updatedCity = result.rows[0];
+        console.log(updatedCity);
+        res.json(updatedCity);
+    } catch (err) {
+        console.log(err);
+        res.status(400).json({ err });
+    }
+})
+
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 })
