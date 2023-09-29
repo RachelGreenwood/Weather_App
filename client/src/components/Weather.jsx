@@ -1,26 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-const Weather = ({ data, city, name }) => {
-    // const handleGetRequest = () => {
-    //     fetch(`http://localhost:8000/users`)
-    //     .then((response) => response.json())
-    //     .then((location) => {
-    //         setCity(location);
-    //         console.log('City fetched: ', location );
-    //     })
-    // };
-
-    // useEffect(() => {handleGetRequest()}, []);
-
-    // const getRequest = () => {
-    //     fetch("http://localhost:8080/events")
-    //     .then((response) => response.json())
-    //     .then(events => {
-    //       setEvents(events); 
-    //       console.log('Events fetched...', events);
-    //       });
-    //   }
-
+const Weather = ({ data, city, faveCity, name }) => {
     const handlePostRequest = () => {
         const postData = { name, city };
         console.log("Inside the POST, ", data);
@@ -50,8 +30,8 @@ const Weather = ({ data, city, name }) => {
                     <p>Wind Speed: {data.wind.speed}</p>
                 </div>
                 <div>
-                    <p>Is this your favorite city?</p>
-                    <button onClick={handlePostRequest}>Save City</button>
+                    <p>Your favorite city is currently {faveCity}. Change to this city?</p>
+                    <button onClick={handlePostRequest}>Change Favorite City</button>
                 </div>
             </div>
         )
